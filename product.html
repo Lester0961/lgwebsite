@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop LG Appliances - Premium Home Electronics | Life's Good</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #A50034 0%, #c9003f 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .logo-text {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .navbar-menu li a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #333;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .navbar-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #A50034;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-menu li a:hover::after,
+        .navbar-menu li a.active::after {
+            width: 100%;
+        }
+
+        .navbar-menu li a:hover,
+        .navbar-menu li a.active {
+            color: #A50034;
+        }
+
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .navbar-search:focus-within {
+            border-color: #A50034;
+        }
+
+        .navbar-search input {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 220px;
+            font-size: 0.9rem;
+        }
+
+        .navbar-search button {
+            padding: 0.6rem 1.2rem;
+            background-color: #A50034;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .navbar-search button:hover {
+            background-color: #8a0029;
+        }
+
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .navbar-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .category-banner {
+            margin-top: 80px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(165, 0, 52, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%),
+                        url('https://via.placeholder.com/1920x300/1a1a1a/FFFFFF?text=Shop+All+LG+Appliances') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .category-banner-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .category-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .breadcrumb a {
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            opacity: 0.6;
+        }
+
+        .filter-toggle-mobile {
+            display: none;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .filter-toggle-btn {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            background-color: #A50034;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .shop-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .sidebar {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar.mobile-active {
+            display: block;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-title-icon {
+            color: #A50034;
+            font-size: 1.3rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        .filter-option:hover {
+            background-color: #f9f9f9;
+        }
+
+        .filter-option input[type="checkbox"],
+        .filter-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #A50034;
+        }
+
+        .filter-option label {
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
+            flex: 1;
+        }
+
+        .filter-count {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .price-range {
+            margin-top: 1rem;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-input {
+            flex: 1;
+        }
+
+        .price-input label {
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .price-input input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .price-slider {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin: 1rem 0;
+        }
+
+        .price-values {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .apply-filter-btn {
+            flex: 1;
+            padding: 0.8rem;
+            background-color: #A50034;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-filter-btn:hover {
+            background-color: #8a0029;
+        }
+
+        .clear-filter-btn {
+            flex: 1;
+            padding: 0.8rem;
+            background-color: #f5f5f5;
+            color: #333;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .clear-filter-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .products-area {
+            background-color: transparent;
+        }
+
+        .products-toolbar {
+            background-color: #ffffff;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .results-count {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .results-count strong {
+            color: #A50034;
+            font-weight: 700;
+        }
+
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active,
+        .view-btn:hover {
+            background-color: #A50034;
+            color: #ffffff;
+        }
+
+        .sort-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sort-dropdown label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .sort-dropdown select {
+            padding: 0.6rem 2rem 0.6rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #ffffff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .products-grid.four-column {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .products-grid.two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badges {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .badge {
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .badge-new {
+            background-color: #A50034;
+        }
+
+        .badge-sale {
+            background-color: #ff6b00;
+        }
+
+        .badge-bestseller {
+            background-color: #00a650;
+        }
+
+        .product-image-wrapper {
+            height: 280px;
+            background-color: #f8f8f8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .product-quick-actions {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-quick-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .quick-action-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action-btn:hover {
+            background-color: #A50034;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #A50034;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .product-name:hover {
+            color: #A50034;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .product-price-wrapper {
+            flex: 1;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #A50034;
+        }
+
+        .product-price-old {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart-btn {
+            padding: 0.7rem 1.5rem;
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #A50034;
+        }
+
+        .view-details-btn {
+            padding: 0.7rem 1.2rem;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .pagination li {
+            display: flex;
+        }
+
+        .pagination button {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button:hover:not(.active) {
+            background-color: #f5f5f5;
+            border-color: #A50034;
+        }
+
+        .pagination button.active {
+            background-color: #A50034;
+            color: #ffffff;
+            border-color: #A50034;
+        }
+
+        .load-more-btn {
+            padding: 1rem 3rem;
+            background-color: #ffffff;
+            color: #A50034;
+            border: 2px solid #A50034;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .load-more-btn:hover {
+            background-color: #A50034;
+            color: #ffffff;
+        }
+
+        .bestsellers-strip {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .bestsellers-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .bestsellers-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .bestsellers-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .bestsellers-subtitle {
+            font-size: 1rem;
+            color: #cccccc;
+        }
+
+        .bestsellers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .bestseller-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .bestseller-card:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: #A50034;
+            transform: translateY(-5px);
+        }
+
+        .bestseller-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .bestseller-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .bestseller-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #A50034;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, #A50034 0%, #ff0051 100%);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .promo-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .promo-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .promo-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .promo-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background-color: #ffffff;
+            color: #A50034;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .promo-cta:hover {
+            background-color: #000000;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background-color: #0a0a0a;
+            color: #cccccc;
+            padding: 4rem 2rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-column h3 {
+            color: #A50034;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-column p {
+            line-height: 1.7;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links li a {
+            color: #999;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links li a:hover {
+            color: #A50034;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #A50034;
+            border-color: #A50034;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            color: #666;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright-tagline {
+            color: #A50034;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1200px) {
+            .shop-container {
+                grid-template-columns: 250px 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid.four-column {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                overflow-y: auto;
+                z-index: 9998;
+                border-radius: 0;
+            }
+
+            .filter-toggle-mobile {
+                display: block;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .category-banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-wrap: wrap;
+            }
+
+            .navbar-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-search {
+                width: 100%;
+            }
+
+            .navbar-search input {
+                width: 100%;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
+
+            .products-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toolbar-right {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .products-grid,
+            .products-grid.four-column,
+            .products-grid.two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .category-banner {
+                height: 250px;
+            }
+
+            .category-banner h1 {
+                font-size: 2rem;
+            }
+
+            .promo-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-banner h1 {
+                font-size: 1.6rem;
+            }
+
+            .product-card {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <div class="logo-image">LG</div>
+                <div class="logo-text">Life's Good</div>
+            </a>
+
+            <div class="navbar-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#help">Help/FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="navbar-search">
+                <input type="text" placeholder="Search products..." aria-label="Search products">
+                <button type="submit" aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="category-banner">
+        <div class="category-banner-content">
+            <h1>Shop All LG Appliances</h1>
+            <p>Browse our complete collection of premium home electronics</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Products</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="filter-toggle-mobile">
+        <button class="filter-toggle-btn" onclick="toggleFilters()">
+            <span>🔍</span>
+            <span>Filters & Categories</span>
+        </button>
+    </div>
+
+    <div class="shop-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="filter-section">
+                <h3 class="filter-title">
+                    <span class="filter-title-icon">📁</span>
+                    Categories
+                </h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-all" name="category" checked>
+                        <label for="cat-all">All Products</label>
+                        <span class="filter-count">(48)</span>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-tv" name="category">
+                        <label for="cat-tv">Televisions</label>
+                        <span class="filter-count">(12)</span>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-fridge" name="category">
+                        <label for="cat-fridge">Refrigerators</label>
+                        <span class="filter-count">(10)</span>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-washer" name="category">
+                        <label for="cat-washer">Washers & Dryers</label>
+                        <span class="filter-count">(9)</span>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-kitchen" name="category">
+                        <label for="cat-kitchen">Kitchen Appliances</label>
+                        <span class="filter-count">(11)</span>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-ac" name="category">
+                        <label for="cat-ac">Air Conditioners</label>
+                        <span class="filter-count">(6)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">
+                    <span class="filter-title-icon">💰</span>
+                    Price Range
+                </h3>
+                <div class="price-range">
+                    <div class="price-inputs">
+                        <div class="price-input">
+                            <label for="min-price">Min</label>
+                            <input type="number" id="min-price" value="0" min="0" max="5000">
+                        </div>
+                        <div class="price-input">
+                            <label for="max-price">Max</label>
+                            <input type="number" id="max-price" value="5000" min="0" max="5000">
+                        </div>
+                    </div>
+                    <div class="price-slider"></div>
+                    <div class="price-values">
+                        <span>$0</span>
+                        <span>$5,000+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">
+                    <span class="filter-title-icon">🏷️</span>
+                    Brand
+                </h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="radio" id="brand-lg" name="brand" checked>
+                        <label for="brand-lg">LG Electronics</label>
+                        <span class="filter-count">(48)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">
+                    <span class="filter-title-icon">⭐</span>
+                    Features
+                </h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="feat-smart" name="features">
+                        <label for="feat-smart">Smart/WiFi Enabled</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="feat-energy" name="features">
+                        <label for="feat-energy">Energy Star Certified</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="feat-ai" name="features">
+                        <label for="feat-ai">AI Technology</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="feat-instaview" name="features">
+                        <label for="feat-instaview">InstaView</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="apply-filter-btn">Apply Filters</button>
+                <button class="clear-filter-btn">Clear All</button>
+            </div>
+        </aside>
+
+        <main class="products-area">
+            <div class="products-toolbar">
+                <div class="toolbar-left">
+                    <div class="results-count">
+                        Showing <strong>1-12</strong> of <strong>48</strong> products
+                    </div>
+                </div>
+                <div class="toolbar-right">
+                    <div class="view-toggle">
+                        <button class="view-btn active" title="Grid view 3 columns">⊞</button>
+                        <button class="view-btn" title="Grid view 4 columns">⊟</button>
+                        <button class="view-btn" title="List view">☰</button>
+                    </div>
+                    <div class="sort-dropdown">
+                        <label for="sort-select">Sort by:</label>
+                        <select id="sort-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-az">Name: A to Z</option>
+                            <option value="name-za">Name: Z to A</option>
+                            <option value="newest">Newest First</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-new">New</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+OLED+evo+C4+65%22" alt="LG OLED evo C4 65 inch">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Television</div>
+                        <h3 class="product-name">LG OLED evo C4 65"</h3>
+                        <p class="product-description">Self-lit OLED pixels, α9 AI Processor Gen7, Dolby Vision & Atmos</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(284)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,899</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-bestseller">Best Seller</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+InstaView+Fridge" alt="LG InstaView Refrigerator">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Refrigerator</div>
+                        <h3 class="product-name">LG InstaView Door-in-Door</h3>
+                        <p class="product-description">30 cu. ft., Knock to illuminate, Craft Ice maker, SmartThinQ</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(412)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$2,499</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+WashTower" alt="LG WashTower">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Laundry</div>
+                        <h3 class="product-name">LG WashTower All-in-One</h3>
+                        <p class="product-description">4.5 cu. ft. washer, 7.4 cu. ft. dryer, TurboWash 360, AI DD</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(198)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,799</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-sale">Sale</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+QuadWash+Pro" alt="LG QuadWash Pro Dishwasher">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Kitchen</div>
+                        <h3 class="product-name">LG QuadWash Pro Dishwasher</h3>
+                        <p class="product-description">Dynamic Dry, TrueSteam, 15 place settings, QuadWash Pro</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(327)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$899</span>
+                                <span class="product-price-old">$1,099</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-new">New</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+QNED+MiniLED+86%22" alt="LG QNED MiniLED TV">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Television</div>
+                        <h3 class="product-name">LG QNED MiniLED 86"</h3>
+                        <p class="product-description">Quantum Dot NanoCell, α7 Gen6 AI Processor, 120Hz refresh</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$2,799</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+InstaView+Range" alt="LG InstaView Range">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Kitchen</div>
+                        <h3 class="product-name">LG InstaView Smart Range</h3>
+                        <p class="product-description">6.3 cu. ft., Air Fry, ProBake Convection, InstaView window</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(243)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,399</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+Gram+Washer" alt="LG Gram Front Load Washer">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Laundry</div>
+                        <h3 class="product-name">LG Gram Front Load Washer</h3>
+                        <p class="product-description">5.8 cu. ft., AI DD, TurboWash 360, Steam technology</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(389)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,199</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-sale">Sale</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+Dual+Inverter+AC" alt="LG Dual Inverter AC">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Air Conditioner</div>
+                        <h3 class="product-name">LG Dual Inverter Smart AC</h3>
+                        <p class="product-description">18,000 BTU, ThinQ WiFi, Energy Star, Fast cooling</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(512)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$799</span>
+                                <span class="product-price-old">$949</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+Studio+Microwave" alt="LG Studio Microwave">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Kitchen</div>
+                        <h3 class="product-name">LG Studio Microwave Oven</h3>
+                        <p class="product-description">2.0 cu. ft., 1200W, Sensor cook, PrintProof finish</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(276)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$549</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-bestseller">Best Seller</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+French+Door+Fridge" alt="LG French Door Refrigerator">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Refrigerator</div>
+                        <h3 class="product-name">LG French Door Refrigerator</h3>
+                        <p class="product-description">26 cu. ft., Smart Cooling Plus, LED lighting, PrintProof</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(634)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,899</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+Heat+Pump+Dryer" alt="LG Heat Pump Dryer">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Laundry</div>
+                        <h3 class="product-name">LG Heat Pump Dryer</h3>
+                        <p class="product-description">4.0 cu. ft., Dual inverter, Energy Star, Sensor dry</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(187)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,299</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge badge-new">New</span>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/FFFFFF?text=LG+UltraGear+OLED+TV" alt="LG UltraGear OLED TV">
+                        <div class="product-quick-actions">
+                            <button class="quick-action-btn" title="Add to Wishlist">♡</button>
+                            <button class="quick-action-btn" title="Quick View">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Television</div>
+                        <h3 class="product-name">LG UltraGear OLED 48"</h3>
+                        <p class="product-description">0.1ms response, 120Hz VRR, G-SYNC, FreeSync Premium</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(94)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price-wrapper">
+                                <span class="product-price">$1,499</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination-wrapper">
+                <ul class="pagination">
+                    <li><button>&laquo;</button></li>
+                    <li><button class="active">1</button></li>
+                    <li><button>2</button></li>
+                    <li><button>3</button></li>
+                    <li><button>4</button></li>
+                    <li><button>&raquo;</button></li>
+                </ul>
+            </div>
+
+            <div class="pagination-wrapper">
+                <button class="load-more-btn">Load More Products</button>
+            </div>
+        </main>
+    </div>
+
+    <section class="promo-banner">
+        <div class="promo-content">
+            <h2 class="promo-title">Special Winter Sale!</h2>
+            <p class="promo-description">Save up to 30% on select LG appliances. Limited time offer!</p>
+            <a href="#" class="promo-cta">Shop Sale Now</a>
+        </div>
+    </section>
+
+    <section class="bestsellers-strip">
+        <div class="bestsellers-container">
+            <div class="bestsellers-header">
+                <h2 class="bestsellers-title">Our Best Sellers</h2>
+                <p class="bestsellers-subtitle">Most loved products by our customers</p>
+            </div>
+            <div class="bestsellers-grid">
+                <div class="bestseller-card">
+                    <div class="bestseller-image">
+                        <img src="https://via.placeholder.com/120x120/333333/FFFFFF?text=OLED" alt="OLED TV">
+                    </div>
+                    <h3 class="bestseller-name">OLED evo C4 Series</h3>
+                    <p class="bestseller-price">From $1,899</p>
+                </div>
+                <div class="bestseller-card">
+                    <div class="bestseller-image">
+                        <img src="https://via.placeholder.com/120x120/333333/FFFFFF?text=Fridge" alt="Refrigerator">
+                    </div>
+                    <h3 class="bestseller-name">InstaView Refrigerator</h3>
+                    <p class="bestseller-price">From $2,499</p>
+                </div>
+                <div class="bestseller-card">
+                    <div class="bestseller-image">
+                        <img src="https://via.placeholder.com/120x120/333333/FFFFFF?text=Washer" alt="Washer">
+                    </div>
+                    <h3 class="bestseller-name">WashTower Combo</h3>
+                    <p class="bestseller-price">From $1,799</p>
+                </div>
+                <div class="bestseller-card">
+                    <div class="bestseller-image">
+                        <img src="https://via.placeholder.com/120x120/333333/FFFFFF?text=Dish" alt="Dishwasher">
+                    </div>
+                    <h3 class="bestseller-name">QuadWash Pro</h3>
+                    <p class="bestseller-price">From $899</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-column">
+                    <h3>LG Appliances</h3>
+                    <p>Bringing innovation, quality, and style to homes worldwide. We believe in making life better through technology.</p>
+                    <div class="footer-tagline">Life's Good</div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Customer Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#warranty">Warranty Information</a></li>
+                        <li><a href="#returns">Returns & Exchanges</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <p>Follow us on social media for the latest updates, promotions, and product launches.</p>
+                    <div class="social-icons">
+                        <a href="#facebook" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#twitter" class="social-icon" aria-label="Twitter">𝕏</a>
+                        <a href="#instagram" class="social-icon" aria-label="Instagram">📷</a>
+                        <a href="#youtube" class="social-icon" aria-label="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 LG Appliances Store. All Rights Reserved.</p>
+                <p><span class="footer-copyright-tagline">Life's Good</span> | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function toggleFilters() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-active');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('.navbar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        const viewButtons = document.querySelectorAll('.view-btn');
+        const productsGrid = document.querySelector('.products-grid');
+
+        viewButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                viewButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                productsGrid.classList.remove('four-column', 'two-column');
+                if (index === 1) {
+                    productsGrid.classList.add('four-column');
+                } else if (index === 2) {
+                    productsGrid.classList.add('two-column');
+                }
+            });
+        });
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = 'Added! ✓';
+                this.style.backgroundColor = '#00a650';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+
+        document.querySelectorAll('.quick-action-btn').forEach(btn => {
+            if (btn.textContent.includes('♡')) {
+                btn.addEventListener('click', function() {
+                    this.textContent = this.textContent === '♡' ? '♥' : '♡';
+                    this.style.color = this.textContent === '♥' ? '#A50034' : '';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

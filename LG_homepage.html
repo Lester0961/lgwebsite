@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LG Appliances - Premium Home Appliances</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent-red: #a50034;
+            --accent-burgundy: #721c24;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --border-subtle: #e5e5e5;
+            --shadow-soft: rgba(0, 0, 0, 0.06);
+            --shadow-medium: rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Page transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px var(--shadow-soft);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            height: 70px;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-red);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            margin-left: 30px;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-red);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            min-height: 600px;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-burgundy);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(165, 0, 52, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            animation: fadeInRight 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border: 2px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Product Grid */
+        .product-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(165, 0, 52, 0.03), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow-medium);
+            border-color: var(--accent-red);
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            border: 2px solid var(--border-subtle);
+            transform: rotate(45deg);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-red);
+            margin-bottom: 15px;
+        }
+
+        .product-price .old-price {
+            font-size: 16px;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-left: 10px;
+            font-weight: 400;
+        }
+
+        .product-rating {
+            display: flex;
+            gap: 3px;
+            font-size: 14px;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--text-primary);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-btn:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            color: white;
+        }
+
+        /* Category Section */
+        .categories {
+            background: var(--primary-light);
+            padding: 80px 40px;
+        }
+
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .category-card::after {
+            content: '→';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: var(--accent-red);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+            border-color: var(--accent-red);
+        }
+
+        .category-card:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
+
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .category-card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Support Page */
+        .support-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .support-card {
+            background: white;
+            border: 1px solid var(--border-subtle);
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .support-card:hover {
+            box-shadow: 0 10px 30px var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .support-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .support-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background: var(--primary-light);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-subtle);
+            background: white;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-red);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-red);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: color 0.3s ease;
+        }
+
+        .cart-item-remove:hover {
+            color: var(--accent-red);
+        }
+
+        .cart-total {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-light);
+            padding: 80px 40px 40px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-column p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid var(--border-subtle);
+            background: white;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-red);
+        }
+
+        .newsletter-btn {
+            padding: 14px 30px;
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--accent-burgundy);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .social-icon:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 30px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                margin-left: auto;
+            }
+
+            .product-grid,
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .product-section,
+            .categories,
+            .support-section,
+            .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 3000;
+            animation: slideInRight 0.3s ease-out;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a class="logo" onclick="navigateTo('home')">LG</a>
+            <ul class="nav-links">
+                <li><a class="nav-link active" data-page="home" onclick="navigateTo('home')">Home</a></li>
+                <li><a class="nav-link" data-page="tvs" onclick="navigateTo('tvs')">TVs</a></li>
+                <li><a class="nav-link" data-page="refrigerators" onclick="navigateTo('refrigerators')">Refrigerators</a></li>
+                <li><a class="nav-link" data-page="washers" onclick="navigateTo('washers')">Washers</a></li>
+                <li><a class="nav-link" data-page="kitchen" onclick="navigateTo('kitchen')">Kitchen</a></li>
+                <li><a class="nav-link" data-page="support" onclick="navigateTo('support')">Support</a></li>
+            </ul>
+            <div class="nav-icons">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="alert('Search functionality coming soon!')">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="alert('Wishlist functionality coming soon!')">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <div style="position: relative;">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="toggleCart()">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Premium<br>Home Appliances</h1>
+                <p class="hero-subtitle">Innovative TVs, Smart Refrigerators<br>Energy-Saving Washers & More</p>
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" onclick="navigateTo('tvs')">Shop Now</a>
+                    <a class="btn btn-secondary" onclick="alert('ThinQ Smart Tech: Control your home appliances from anywhere with LG ThinQ technology!')">Discover ThinQ Smart Tech</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder"></div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="product-section">
+            <div class="product-grid">
+                <div class="product-card" onclick="navigateTo('tvs')">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Latest OLED TVs</h3>
+                        <p class="product-description">Captivating storytelling displays</p>
+                        <button class="product-btn">Shop Now</button>
+                    </div>
+                </div>
+                <div class="product-card" onclick="navigateTo('refrigerators')">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Smart Inverter Refrigerators</h3>
+                        <p class="product-description">Keeps food fresher longer</p>
+                        <button class="product-btn">Shop Now</button>
+                    </div>
+                </div>
+                <div class="product-card" onclick="navigateTo('washers')">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>TurboWash Washers</h3>
+                        <p class="product-description">Saves time on washing</p>
+                        <button class="product-btn">Shop Now</button>
+                    </div>
+                </div>
+                <div class="product-card" onclick="navigateTo('kitchen')">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Kitchen Must Haves</h3>
+                        <p class="product-description">Professional cooking experience</p>
+                        <button class="product-btn">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories">
+            <div class="categories-container">
+                <h2 class="section-title">Explore Our Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="navigateTo('tvs')">
+                        <div class="category-icon">📺</div>
+                        <h3>TVs & Audio</h3>
+                    </div>
+                    <div class="category-card" onclick="navigateTo('refrigerators')">
+                        <div class="category-icon">❄️</div>
+                        <h3>Refrigerators</h3>
+                    </div>
+                    <div class="category-card" onclick="navigateTo('kitchen')">
+                        <div class="category-icon">🔥</div>
+                        <h3>Kitchen Appliances</h3>
+                    </div>
+                    <div class="category-card" onclick="alert('Home Appliances category coming soon!')">
+                        <div class="category-icon">📱</div>
+                        <h3>Home Appliances</h3>
+                    </div>
+                    <div class="category-card" onclick="alert('Monitors & PCs category coming soon!')">
+                        <div class="category-icon">💻</div>
+                        <h3>Monitors & PCS</h3>
+                    </div>
+                    <div class="category-card" onclick="navigateTo('support')">
+                        <div class="category-icon">🛠️</div>
+                        <h3>Support</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Sellers -->
+        <section class="product-section">
+            <h2 class="section-title">Best Sellers</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h4>LG 65" OLED TV</h4>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-price">$1,999 <span class="old-price">$2,499</span></div>
+                        <button class="product-btn" onclick="addToCart('LG 65 OLED TV', 1999)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h4>LG Smart Fridge</h4>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-price">$2,499</div>
+                        <button class="product-btn" onclick="addToCart('LG Smart Fridge', 2499)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h4>LG TurboWash Washer</h4>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-price">$899</div>
+                        <button class="product-btn" onclick="addToCart('LG TurboWash Washer', 899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h4>LG Dual Fuel Range</h4>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-price">$1,799</div>
+                        <button class="product-btn" onclick="addToCart('LG Dual Fuel Range', 1799)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h4>LG Dishwasher</h4>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-price">$699</div>
+                        <button class="product-btn" onclick="addToCart('LG Dishwasher', 699)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TVs Page -->
+    <div id="tvs" class="page">
+        <section class="product-section">
+            <div class="section-header">
+                <h2 class="section-title">OLED & Smart TVs</h2>
+                <p class="section-subtitle">Experience cinema-quality viewing with our latest television technology</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG 65" OLED C3 Series</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">4K OLED with AI-powered processor and Dolby Vision</p>
+                        <div class="product-price">$1,999 <span class="old-price">$2,499</span></div>
+                        <button class="product-btn" onclick="addToCart('LG 65 OLED C3 Series', 1999)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG 77" OLED G3 Series</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Gallery Design with brightness booster and evo technology</p>
+                        <div class="product-price">$3,499</div>
+                        <button class="product-btn" onclick="addToCart('LG 77 OLED G3 Series', 3499)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG 55" NanoCell TV</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">4K NanoCell with local dimming and webOS smart platform</p>
+                        <div class="product-price">$799</div>
+                        <button class="product-btn" onclick="addToCart('LG 55 NanoCell TV', 799)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG 83" OLED Evo</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Ultimate home theater experience with self-lit pixels</p>
+                        <div class="product-price">$5,999</div>
+                        <button class="product-btn" onclick="addToCart('LG 83 OLED Evo', 5999)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG 48" OLED A2 Series</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">Perfect for smaller spaces with stunning OLED technology</p>
+                        <div class="product-price">$1,299</div>
+                        <button class="product-btn" onclick="addToCart('LG 48 OLED A2 Series', 1299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG 86" QNED MiniLED</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Quantum Dot NanoCell with MiniLED backlighting</p>
+                        <div class="product-price">$2,999</div>
+                        <button class="product-btn" onclick="addToCart('LG 86 QNED MiniLED', 2999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Refrigerators Page -->
+    <div id="refrigerators" class="page">
+        <section class="product-section">
+            <div class="section-header">
+                <h2 class="section-title">Smart Refrigerators</h2>
+                <p class="section-subtitle">Keep your food fresher for longer with intelligent cooling technology</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG InstaView Door-in-Door</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">French door with InstaView and Craft Ice maker</p>
+                        <div class="product-price">$3,299</div>
+                        <button class="product-btn" onclick="addToCart('LG InstaView Door-in-Door', 3299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Smart French Door</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">ThinQ technology with voice control and smart diagnosis</p>
+                        <div class="product-price">$2,499</div>
+                        <button class="product-btn" onclick="addToCart('LG Smart French Door', 2499)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Side-by-Side Refrigerator</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">26 cu. ft. capacity with door-in-door design</p>
+                        <div class="product-price">$1,899</div>
+                        <button class="product-btn" onclick="addToCart('LG Side-by-Side Refrigerator', 1899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Counter Depth Fridge</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Sleek built-in look with PrintProof finish</p>
+                        <div class="product-price">$2,799</div>
+                        <button class="product-btn" onclick="addToCart('LG Counter Depth Fridge', 2799)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Top Freezer Refrigerator</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">Energy-efficient with multi-air flow system</p>
+                        <div class="product-price">$899</div>
+                        <button class="product-btn" onclick="addToCart('LG Top Freezer Refrigerator', 899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Four-Door Flex</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Convertible middle drawer for maximum flexibility</p>
+                        <div class="product-price">$3,599</div>
+                        <button class="product-btn" onclick="addToCart('LG Four-Door Flex', 3599)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Washers Page -->
+    <div id="washers" class="page">
+        <section class="product-section">
+            <div class="section-header">
+                <h2 class="section-title">TurboWash™ Washers & Dryers</h2>
+                <p class="section-subtitle">Save time and energy with our advanced laundry solutions</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Front Load Washer</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">5.0 cu. ft. with TurboWash 360 and Steam technology</p>
+                        <div class="product-price">$1,199</div>
+                        <button class="product-btn" onclick="addToCart('LG Front Load Washer', 1199)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG All-in-One Washer Dryer</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Wash and dry in one machine - perfect for apartments</p>
+                        <div class="product-price">$1,699</div>
+                        <button class="product-btn" onclick="addToCart('LG All-in-One Washer Dryer', 1699)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Top Load Washer</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">Large capacity with TurboDrum technology</p>
+                        <div class="product-price">$899</div>
+                        <button class="product-btn" onclick="addToCart('LG Top Load Washer', 899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Heat Pump Dryer</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Energy Star certified with sensor dry technology</p>
+                        <div class="product-price">$1,099</div>
+                        <button class="product-btn" onclick="addToCart('LG Heat Pump Dryer', 1099)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG SideKick Pedestal Washer</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">Perfect for small loads and delicates</p>
+                        <div class="product-price">$699</div>
+                        <button class="product-btn" onclick="addToCart('LG SideKick Pedestal Washer', 699)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG WashTower</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Single unit stack with center control panel</p>
+                        <div class="product-price">$2,299</div>
+                        <button class="product-btn" onclick="addToCart('LG WashTower', 2299)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Kitchen Page -->
+    <div id="kitchen" class="page">
+        <section class="product-section">
+            <div class="section-header">
+                <h2 class="section-title">Kitchen Appliances</h2>
+                <p class="section-subtitle">Professional-grade cooking equipment for your home</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Dual Fuel Range</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Gas cooktop with electric convection oven</p>
+                        <div class="product-price">$2,799</div>
+                        <button class="product-btn" onclick="addToCart('LG Dual Fuel Range', 2799)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Smart Dishwasher</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">QuadWash technology with TrueSteam</p>
+                        <div class="product-price">$899</div>
+                        <button class="product-btn" onclick="addToCart('LG Smart Dishwasher', 899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Over-the-Range Microwave</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">2.0 cu. ft. with ExtendaVent and sensor cook</p>
+                        <div class="product-price">$499</div>
+                        <button class="product-btn" onclick="addToCart('LG Over-the-Range Microwave', 499)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG InstaView Range</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Air fry in your oven with InstaView window</p>
+                        <div class="product-price">$3,299</div>
+                        <button class="product-btn" onclick="addToCart('LG InstaView Range', 3299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Cooktop</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-description">36" gas cooktop with precision burners</p>
+                        <div class="product-price">$1,299</div>
+                        <button class="product-btn" onclick="addToCart('LG Cooktop', 1299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>LG Wall Oven</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-description">Double wall oven with convection and ProBake</p>
+                        <div class="product-price">$2,999</div>
+                        <button class="product-btn" onclick="addToCart('LG Wall Oven', 2999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Support Page -->
+    <div id="support" class="page">
+        <section class="support-section">
+            <div class="section-header">
+                <h2 class="section-title">Customer Support</h2>
+                <p class="section-subtitle">We're here to help with all your needs</p>
+            </div>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3>📞 Contact Us</h3>
+                    <p>Call us at 1-800-LG-HELP (1-800-544-4357)</p>
+                    <p>Monday - Sunday: 8AM - 8PM EST</p>
+                    <a href="#" class="btn btn-primary" onclick="alert('Calling support...')">Call Now</a>
+                </div>
+                
+                <div class="support-card">
+                    <h3>💬 Live Chat</h3>
+                    <p>Chat with our support team in real-time</p>
+                    <p>Average response time: 2 minutes</p>
+                    <a href="#" class="btn btn-primary" onclick="alert('Opening live chat...')">Start Chat</a>
+                </div>
+                
+                <div class="support-card">
+                    <h3>🔧 Product Manuals</h3>
+                    <p>Download user manuals and guides</p>
+                    <p>Available for all LG products</p>
+                    <a href="#" class="btn btn-primary" onclick="alert('Opening manuals library...')">View Manuals</a>
+                </div>
+                
+                <div class="support-card">
+                    <h3>📦 Order Tracking</h3>
+                    <p>Track your order status and delivery</p>
+                    <p>Real-time updates</p>
+                    <a href="#" class="btn btn-primary" onclick="alert('Opening order tracking...')">Track Order</a>
+                </div>
+                
+                <div class="support-card">
+                    <h3>🛠️ Service Request</h3>
+                    <p>Schedule a repair or maintenance visit</p>
+                    <p>Certified LG technicians</p>
+                    <a href="#" class="btn btn-primary" onclick="alert('Opening service request form...')">Request Service</a>
+                </div>
+                
+                <div class="support-card">
+                    <h3>❓ FAQ</h3>
+                    <p>Find answers to common questions</p>
+                    <p>Instant solutions</p>
+                    <a href="#" class="btn btn-primary" onclick="alert('Opening FAQ...')">View FAQs</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3 style="margin-bottom: 20px; font-size: 24px;">Send Us a Message</h3>
+                <form onsubmit="handleContactForm(event)">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Product Category</label>
+                        <select>
+                            <option>Select a category</option>
+                            <option>TVs</option>
+                            <option>Refrigerators</option>
+                            <option>Washers & Dryers</option>
+                            <option>Kitchen Appliances</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea required placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleCart()">×</button>
+            <h2 style="margin-bottom: 30px;">Shopping Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About LG</h3>
+                    <p>Innovation for a better life</p>
+                    <p>Leading the home appliance industry</p>
+                    <p>Committed to sustainability</p>
+                    <p>Award-winning design and technology</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="navigateTo('support')">Support Center</a></li>
+                        <li><a onclick="alert('Product registration coming soon!')">Product Registration</a></li>
+                        <li><a onclick="alert('Warranty information coming soon!')">Warranty Information</a></li>
+                        <li><a onclick="alert('Returns & exchanges coming soon!')">Returns & Exchanges</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="alert('About us coming soon!')">About Us</a></li>
+                        <li><a onclick="alert('Careers coming soon!')">Careers</a></li>
+                        <li><a onclick="alert('Press releases coming soon!')">Press Releases</a></li>
+                        <li><a onclick="alert('Sustainability coming soon!')">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for exclusive offers and updates</p>
+                    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input type="email" class="newsletter-input" placeholder="Your email" required>
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" onclick="alert('Facebook coming soon!')">f</a>
+                        <a href="#" class="social-icon" onclick="alert('Twitter coming soon!')">t</a>
+                        <a href="#" class="social-icon" onclick="alert('Instagram coming soon!')">i</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 LG Appliances. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Shopping cart data
+        let cart = [];
+
+        // Navigation function
+        function navigateTo(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(page).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === page) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add to cart function
+        function addToCart(productName, price) {
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showSuccess(`${productName} added to cart!`);
+        }
+
+        // Update cart display
+        function updateCart() {
+            const cartBadge = document.getElementById('cartBadge');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            // Update badge
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalItems;
+            
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartTotal.textContent = '$0';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image"></div>
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p class="cart-item-price">$${item.price.toLocaleString()} × ${item.quantity}</p>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart('${item.name}')">Remove</button>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `$${total.toLocaleString()}`;
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            updateCart();
+            showSuccess('Item removed from cart');
+        }
+
+        // Toggle cart modal
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+        }
+
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Checkout functionality coming soon!\n\nYour total: $${total.toLocaleString()}\n\nItems: ${cart.length}`);
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.textContent = message;
+            successMsg.classList.add('show');
+            
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        }
+
+        // Handle contact form
+        function handleContactForm(event) {
+            event.preventDefault();
+            showSuccess('Message sent successfully! We\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Handle newsletter
+        function handleNewsletter(event) {
+            event.preventDefault();
+            showSuccess('Thank you for subscribing!');
+            event.target.reset();
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            alert('Mobile menu coming soon!');
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCart();
+            }
+        });
+
+        // Initialize cart
+        updateCart();
+    </script>
+</body>
+</html>
